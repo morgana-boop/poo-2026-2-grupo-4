@@ -3,7 +3,7 @@ import java.util.*;
 import atividades.*;
 import alunos.*;
 import turmas.*;
-import matriculas.Matricula;
+//import matriculas.Matricula;
 
 public class Academia {
 
@@ -11,9 +11,10 @@ public class Academia {
     private ArrayList<Aluno> alunos = new ArrayList<>();
     private ArrayList<Atividade> atividades = new ArrayList<>();
     private ArrayList<ComTurma> turmas = new ArrayList<>();
-    private ArrayList<Matricula> matriculas = new ArrayList<>();
+    //private ArrayList<Matricula> matriculas = new ArrayList<>();
 
-    public Academia(){}
+    public Academia(){
+    }
 
     public void cadastrarAtividade(Atividade atividade) {
         atividades.add(atividade);
@@ -30,7 +31,7 @@ public class Academia {
         alunos.add(aluno);
     }
 
-    public void cadastrarTurma(ComTurma turma) {
+    /* public void cadastrarTurma(ComTurma turma) {
         for (ComTurma t : turmas) {
             if (t.getCodigo().equals(turma.getCodigo())) {
                 System.out.println("Turma já cadastrada");
@@ -39,7 +40,7 @@ public class Academia {
         }
 
         turmas.add(turma);
-    }
+    } */
 
     private boolean alunoCadastrado(String cpf) {
         for (Aluno a : alunos) {
@@ -51,7 +52,7 @@ public class Academia {
         return false;
     }
 
-    public void matricularAluno(Aluno aluno, Atividade... atividades) {
+    /* public void matricularAluno(Aluno aluno, Atividade... atividades) {
 
         for (Matricula m : matriculas) {
             if (m.getAluno().equals(aluno) && m.isAtiva()) {
@@ -79,7 +80,7 @@ public class Academia {
         }
 
         matriculas.add(matricula);
-        }
+        } */
 
     public void inscreverEmTurma(Aluno aluno, ComTurma turma) {
 
@@ -90,7 +91,7 @@ public class Academia {
 
         boolean turmaEncontrada = false;
 
-        for (ComTurma t : turmas) {
+        /* for (ComTurma t : turmas) {
             if (t.getCodigo().equals(turma.getCodigo())) {
                 turmaEncontrada = true;
                 break;
@@ -105,9 +106,9 @@ public class Academia {
         if(turma.vagasDisponiveis() <= 0) {
             System.out.println("Turma lotada");
             return;
-        }
+        } */
 
-        for (Matricula m : matriculas) {
+        /* for (Matricula m : matriculas) {
             if (m.getAluno().equals(aluno) && m.isAtiva() && m.getTurmas().contains(turma)) {
                 System.out.println("Aluno já inscrito nessa turma");
                 return;
@@ -120,13 +121,13 @@ public class Academia {
                 turma.ocuparVaga();
                 return;
             }
-        }
+        } */
 
         System.out.println("Aluno não matriculado");
     }
 
     public void cancelarInscricao(Aluno aluno, ComTurma turma) {
-        for(Matricula m : matriculas) {
+        /* for(Matricula m : matriculas) {
             if (m.getAluno().equals(aluno) && m.isAtiva()
                     && !m.getTurmas().contains(turma)) {
                 System.out.println("Aluno não inscrito nessa turma");
@@ -145,12 +146,12 @@ public class Academia {
                 System.out.println("Aluno não está inscrito nessa turma");
                 return;
             }
-        }   
+        }    */
 
         System.out.println("Aluno não matriculado");
     }
 
-    public void trancarMatricula(Aluno aluno) {
+    /* public void trancarMatricula(Aluno aluno) {
         for (Matricula m : matriculas) {
             if (m.getAluno().equals(aluno) && m.isAtiva()) {
                 m.cancelarMatricula();
@@ -159,6 +160,6 @@ public class Academia {
         }
 
         System.out.println("Aluno não matriculado");
-    }
+    } */
 
 }
