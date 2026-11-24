@@ -21,7 +21,7 @@ public class Academia {
 
     public void cadastrarAluno(Aluno aluno){
         for (Aluno a : alunos) {
-            if (a.getCpf().equals(aluno.getCpf())) {
+            if (a.consultarCpf().equals(aluno.consultarCpf())) {
                 System.out.println("Aluno já cadastrado");
                 return;
             }
@@ -43,7 +43,7 @@ public class Academia {
 
     private boolean alunoCadastrado(String cpf) {
         for (Aluno a : alunos) {
-            if (a.getCpf().equals(cpf)) {
+            if (a.consultarCpf().equals(cpf)) {
                 return true;
             }
         }
@@ -67,7 +67,7 @@ public class Academia {
             }
         }
 
-        if (!alunoCadastrado(aluno.getCpf())) {
+        if (!alunoCadastrado(aluno.consultarCpf())) {
             System.out.println("Aluno não cadastrado");
             return;
         }
@@ -83,7 +83,7 @@ public class Academia {
 
     public void inscreverEmTurma(Aluno aluno, ComTurma turma) {
 
-        if (!alunoCadastrado(aluno.getCpf())) {
+        if (!alunoCadastrado(aluno.consultarCpf())) {
             System.out.println("Aluno não cadastrado");
             return;
         }
