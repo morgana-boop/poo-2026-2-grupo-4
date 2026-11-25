@@ -85,5 +85,3 @@ public String toString(){
     return "Matrícula #" + codigo + "| Aluno: " + aluno.consultarNome() + "| (CPF:" + aluno.consultarCpf() + ")" + "| Status:" + (ativa ? "Ativo" : "Trancado") + "| Atividades: " + atividades.size();
 }
 }
-
-
