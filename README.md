@@ -31,47 +31,18 @@ java -cp out app.Main
 | Lucas Fontes | [@lfonteskayn](https://github.com/lfonteskayn) | `core/` |
 | Marcos Chagas | [@morgana-boop](https://github.com/morgana-boop) | `app/` e `relatorios/` |
 
-## Estrutura do projeto
+## Diagrama de classes (UML)
 
-```text
-poo-2026-2-grupo-4/
-├── src/
-│   ├── atividades/              # Gabriel S
-│   │   ├── Atividade.java
-│   │   ├── Musculacao.java
-│   │   ├── Natacao.java
-│   │   └── Pilates.java
-│   │
-│   ├── alunos/                  # Anna Júlia
-│   │   ├── Aluno.java
-│   │   ├── AlunoRegular.java
-│   │   ├── AlunoEstudante.java
-│   │   └── AlunoSenior.java
-│   │
-│   ├── turmas/                  # Erasmo
-│   │   ├── ComTurma.java
-│   │   └── AvaliacaoFisica.java
-│   │
-│   ├── matriculas/              # Marco Antônio
-│   │   └── Matricula.java
-│   │
-│   ├── core/                    # Lucas Fontes
-│   │   └── Academia.java
-│   │
-│   ├── app/                     # Marcos Chagas
-|   |   ├── Menu.java
-│   │   └── Main.java
-│   │
-│   └── relatorios/              # Marcos Chagas
-│       └── Relatorios.java
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── .gitignore
-└── README.md
-```
+Representação da arquitetura orientada a objetos do
+Sistema Academia e dos relacionamentos entre suas classes.
+
+<p align="center">
+  <img src="https://i.imgur.com/yH3kPXp.png"
+       alt="Diagrama de classes UML"
+       width="100%">
+</p>
 
 ## Declaração de uso de IA
 
 Gemini foi usado para delegar o trabalho de cada integrante sobre o que foi exigido pelo professor.
+ChatGPT foi utilizado para auxiliar na elaboração do diagrama de classes do sistema.
