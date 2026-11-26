@@ -1,0 +1,54 @@
+name: Atualizar Métricas de Contribuição
+
+on:
+  schedule:
+    # 02:00 UTC corresponde a 23:00 no horário de Brasília / Imperatriz (UTC-3)
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      escopo:
+        description: "Escopo Git ('--all' para todas as branches ou 'main' para consolidado)"
+        required: true
+        default: "--all"
+        type: choice
+        options:
+          - "--all"
+          - "main"
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar-metricas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar histórico completo do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Calcular contribuições e atualizar README.md
+        env:
+          ESCOPO_MANUAL: ${{ inputs.escopo }}
+        run: |
+          ESCOPO="${ESCOPO_MANUAL:---all}"
+          python scripts/contribuicao.py --ref "$ESCOPO" --readme README.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commitar e enviar atualização se houver mudança
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: atualizar métricas de contribuição [skip ci]"
+            git pull --rebase
+            git push
+          else
+            echo "Nenhuma alteração nas métricas desde a última execução."
+          fi
