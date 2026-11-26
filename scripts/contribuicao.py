@@ -16,6 +16,10 @@ MEMBROS = {
     "Marcos Chagas": ["nuitmorgana@gmail.com"],
 }
 
+EMAILS_IGNORADOS = {
+    "morgscollab@teste.com",
+}
+
 EMAIL_PARA_NOME = {
     email.lower(): nome
     for nome, emails in MEMBROS.items()
@@ -149,6 +153,9 @@ def calcular_metricas(ref: str = "--all"):
 
         commit, email = registro.split("\t", 1)
         email = email.strip().lower()
+
+        if email in EMAILS_IGNORADOS:
+            continue
 
         nome = EMAIL_PARA_NOME.get(email)
         if not nome:
