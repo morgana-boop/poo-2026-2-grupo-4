@@ -51,4 +51,10 @@ public class Natacao extends Atividade implements ComTurma {
 
 		return true;
 	}
+
+    // ALTERADO (Menu): descrever() mostra as vagas na listagem de turmas
+    @Override
+    public String descrever() {
+        return super.descrever() + " | Vagas: " + vagasDisponiveis() + "/" + capacidadeMaxima;
+    }
 }

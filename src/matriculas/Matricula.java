@@ -4,6 +4,7 @@ import alunos.Aluno;
 import atividades.Atividade;
 import java.util.ArrayList;
 import java.util.List;
+import turmas.ComTurma;
 
 
 public class Matricula {
@@ -12,6 +13,7 @@ private int codigo;
 private Aluno aluno; 
 private List<Atividade> atividades;
 private boolean ativa;
+private List<ComTurma> turmas; // ALTERADO (Menu): turmas em que o aluno está inscrito (exigido no enunciado)
 
 public Matricula(Aluno aluno) {
     if(aluno == null){
@@ -21,6 +23,7 @@ public Matricula(Aluno aluno) {
     this.aluno = aluno;
     this.atividades = new ArrayList <>();
     this.ativa = true;
+    this.turmas = new ArrayList<>();
 }
 
 public int getCodigo() {
@@ -84,4 +87,26 @@ public double calcularMensalidadeComDesconto() {
 public String toString(){
     return "Matrícula #" + codigo + "| Aluno: " + aluno.consultarNome() + "| (CPF:" + aluno.consultarCpf() + ")" + "| Status:" + (ativa ? "Ativo" : "Trancado") + "| Atividades: " + atividades.size();
 }
+
+    // ALTERADO (Menu): controle das turmas inscritas
+    public List<ComTurma> getTurmas() {
+        return new ArrayList<>(turmas);
+    }
+
+    public boolean possuiTurma(ComTurma turma) {
+        return turmas.contains(turma);
+    }
+
+    public void adicionarTurma(ComTurma turma) {
+        if (turma == null) {
+            throw new IllegalArgumentException("Turma inválida");
+        }
+        if (!turmas.contains(turma)) {
+            turmas.add(turma);
+        }
+    }
+
+    public boolean removerTurma(ComTurma turma) {
+        return turmas.remove(turma);
+    }
 }
