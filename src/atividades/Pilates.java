@@ -10,7 +10,7 @@ public class Pilates extends Atividade implements ComTurma {
 	private int vagasOcupadas;
 
 	public Pilates(int codigo, String nome, double valorBase, int capacidadeMaxima) {
-		super(codigo, nome, capacidadeMaxima);
+		super(codigo, nome, valorBase); // ALTERADO (Menu): estava passando capacidadeMaxima como valorBase
 
 		if (capacidadeMaxima <= 0) {
 			throw new IllegalArgumentException("Capacidade máxima deve ser maior que zero.");
@@ -51,4 +51,10 @@ public class Pilates extends Atividade implements ComTurma {
 
 		return true;
 	}
+
+    // ALTERADO (Menu): descrever() mostra as vagas na listagem de turmas
+    @Override
+    public String descrever() {
+        return super.descrever() + " | Vagas: " + vagasDisponiveis() + "/" + capacidadeMaxima;
+    }
 }

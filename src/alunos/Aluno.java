@@ -39,4 +39,24 @@ public abstract class Aluno {
     }
 
     public abstract double percentualDeDesconto(); //metodo abstrato
+
+    // ALTERADO (Menu): setters com a validação do construtor, usados em "alterar aluno"
+    public void alterarNome(String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
+        this.nome = nome.trim();
+    }
+
+    public void alterarIdade(int idade) {
+        if (idade < 7) {
+            throw new IllegalArgumentException("Idade insuficiente");
+        }
+        this.idade = idade;
+    }
+
+    // ALTERADO (Menu): descrição usada nas listagens
+    public String descrever() {
+        return getClass().getSimpleName() + " | " + nome + " | CPF: " + cpf + " | Idade: " + idade + " | Desconto: " + Math.round(percentualDeDesconto() * 100) + "%";
+    }
 }
