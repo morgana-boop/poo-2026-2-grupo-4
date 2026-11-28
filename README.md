@@ -46,20 +46,3 @@ Sistema Academia e dos relacionamentos entre suas classes.
 
 Gemini foi usado para delegar o trabalho de cada integrante sobre o que foi exigido pelo professor.
 ChatGPT foi utilizado para auxiliar na elaboração do diagrama de classes do sistema.
-
-<!-- CONTRIBUICAO:START -->
-## 📊 Métricas de Contribuição (Java)
-
-- **Escopo analisado:** todas as branches (`--all`) (desde o commit inicial)
-- **Total de linhas válidas de código:** `536`
-- **Última atualização:** 28/11/2026 às 11:31 (BRT)
-
-| Integrante | Commits | Linhas Válidas | Participação | Progresso |
-| :--- | :---: | :---: | :---: | :--- |
-| **Lucas Fontes** | 3 | `136` | **25.37%** | `████░░░░░░░░░░░░` |
-| **Gabriel S** | 5 | `135` | **25.19%** | `████░░░░░░░░░░░░` |
-| **Marcos Chagas** | 11 | `75` | **13.99%** | `██░░░░░░░░░░░░░░` |
-| **Marco Antônio** | 2 | `73` | **13.62%** | `██░░░░░░░░░░░░░░` |
-| **Anna Júlia** | 2 | `63` | **11.75%** | `██░░░░░░░░░░░░░░` |
-| **Erasmo** | 3 | `54` | **10.07%** | `██░░░░░░░░░░░░░░` |
-<!-- CONTRIBUICAO:END -->
