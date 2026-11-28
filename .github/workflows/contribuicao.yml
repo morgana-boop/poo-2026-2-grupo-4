@@ -38,7 +38,7 @@ jobs:
           ESCOPO_MANUAL: ${{ inputs.escopo }}
         run: |
           ESCOPO="${ESCOPO_MANUAL:---all}"
-          python scripts/contribuicao.py --ref "$ESCOPO" --readme README.md >> "$GITHUB_STEP_SUMMARY"
+          python scripts/contribuicao.py --ref="$ESCOPO" --readme README.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commitar e enviar atualização se houver mudança
         run: |
