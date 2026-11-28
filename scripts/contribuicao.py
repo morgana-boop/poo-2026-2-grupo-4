@@ -1,12 +1,12 @@
 import argparse
 import re
 import subprocess
+import sys
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # Mapeamento: Nome -> Lista de e-mails associados ao integrante
-# Se alguém usar e-mail @users.noreply.github.com, basta adicionar na lista da pessoa.
 MEMBROS = {
     "Gabriel S": ["truegojira@gmail.com"],
     "Anna Júlia": ["j.anna@acad.ifma.edu.br"],
@@ -16,6 +16,7 @@ MEMBROS = {
     "Marcos Chagas": ["nuitmorgana@gmail.com"],
 }
 
+# Contas de teste ou serviço que devem ser ignoradas sem gerar alerta no README
 EMAILS_IGNORADOS = {
     "morgscollab@teste.com",
 }
@@ -286,6 +287,21 @@ def atualizar_readme(caminho_readme: Path, bloco_markdown: str) -> None:
     caminho_readme.write_text(novo_conteudo, encoding="utf-8")
 
 
+def normalizar_argv(args_brutos: list[str]) -> list[str]:
+    normalizados = []
+    it = iter(args_brutos)
+    for token in it:
+        if token == "--ref":
+            valor = next(it, None)
+            if valor is not None:
+                normalizados.append(f"--ref={valor}")
+            else:
+                normalizados.append(token)
+        else:
+            normalizados.append(token)
+    return normalizados
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Calcula métricas de contribuição em arquivos .java."
@@ -301,7 +317,7 @@ def main() -> None:
         default=None,
         help="Caminho do arquivo Markdown a atualizar (ex: README.md).",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(normalizar_argv(sys.argv[1:]))
 
     linhas, commits, nao_mapeados = calcular_metricas(ref=args.ref)
     relatorio_md = gerar_markdown(linhas, commits, nao_mapeados, ref=args.ref)
